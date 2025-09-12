@@ -94,7 +94,7 @@ def exp_fragment():
         st.text("音声A")
         st.audio(url)
         nat_choice = st.radio(
-            "Q1: 音声Aのイントネーションの自然さについて、どう思いますか？",
+            "Q1: 音声Aについて、イントネーションの自然さはどう思いますか？",
             options=[
                 "とても悪い",
                 "悪い",
@@ -107,7 +107,7 @@ def exp_fragment():
             horizontal=True,
         )
         int_choice = st.radio(
-            "Q2: 音声Aの明瞭性、聞き取りやすさについて、どう思いますか？",
+            "Q2: 音声Aについて、明瞭性、聞き取りやすさはどう思いますか？",
             options=[
                 "とても悪い",
                 "悪い",
@@ -122,7 +122,7 @@ def exp_fragment():
         st.text("音声B")
         st.audio(sim_url)
         sim_choice = st.radio(
-            "Q3: 音声AとBの声の類似度について、どう思いますか",
+            "Q3: 音声AとBについて、声の類似度はどう思いますか",
             options=[
                 "とても悪い",
                 "悪い",

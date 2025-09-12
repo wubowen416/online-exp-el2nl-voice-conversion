@@ -32,7 +32,7 @@ with st.container(border=True):
             "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/gt/audio/jvs001/099.wav"
         )
         nat_choice = st.radio(
-            "Q1: 音声Aのイントネーションの自然さについて、どう思いますか？",
+            "Q1: 音声Aについて、イントネーションの自然さはどう思いますか？",
             options=[
                 "とても悪い",
                 "悪い",
@@ -44,7 +44,7 @@ with st.container(border=True):
             horizontal=True,
         )
         int_choice = st.radio(
-            "Q2: 音声Aの明瞭性、聞き取りやすさについて、どう思いますか？",
+            "Q2: 音声Aについて、明瞭性、聞き取りやすさはどう思いますか？",
             options=[
                 "とても悪い",
                 "悪い",
@@ -60,7 +60,7 @@ with st.container(border=True):
             "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/gt/audio/jvs001/098.wav"
         )
         sim_choice = st.radio(
-            "Q3: 音声AとBの声の類似度について、どう思いますか",
+            "Q3: 音声AとBについて、声の類似度はどう思いますか",
             options=[
                 "とても悪い",
                 "悪い",
