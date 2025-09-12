@@ -5,20 +5,17 @@ st.title("実験紹介")
 with st.container(border=True):
     st.header("内容")
     st.text(
-        "本実験では、5〜10秒程度の発話音声のペアを聞いていただき、その音声に関する質問にご回答ください。\n\n"
-        "各音声ペアに、以下に関する質問が用意されています。\n"
-        "(1) イントネーションの自然さ：イントネーションが、どちらの音声の方が自然に聞こえるかを評価してください。\n"
-        "(2) 明瞭性：発話内容がどちらの音声の方が聞き取りやすいかを評価してください。\n\n"
+        "本実験では、5〜10秒程度の発話音声を聞いていただき、その音声に関する質問にご回答ください。\n\n"
+        "各音声に、以下に関する質問が用意されています。\n"
+        "(1) イントネーションの自然さ：イントネーションがどのくらい自然に聞こえるかを評価してください。\n"
+        "(2) 明瞭性：発話内容がどのくらい聞き取りやすいかを評価してください。\n"
+        "(3) 類似度：2つの発話の声がどのくらい類似しているかを評価してください。\n\n"
         "各質問にはラジオボタン式の選択肢があります。\n"
-        "音声ペアをAとBとした場合、ラジオボタンは以下の5個で構成されています。もっとも当てはまるものを選択してください。\n"
-        "(1) A\n"
-        "(2) ややA\n"
-        "(3) 分からない\n"
-        "(4) ややB\n"
-        "(5) B\n\n"
-        "どちらも同じくらい良い、もしくはどちらも同じくらい良くない場合は、「(3) 分からない」を選んでください。\n\n"
+        "もっとも当てはまるものを選択してください。\n"
+        "(1) とても悪い　(2) 悪い　(3) 普通　(4) 良い　(5) とても良い"
+        "\n\n"
         "音声は繰り返し聞くことが可能ですが、最大2回までとしてください。\n\n"
-        "全部で20の音声ペアを聞いて評価していただきます。所要時間は15～20分程度です。"
+        "全部で40個の音声を聞いて評価していただきます。所要時間は15～20分程度です。"
     )
 
     st.header("インタフェース")
@@ -29,36 +26,47 @@ with st.container(border=True):
     )
 
     with st.container(border=True):
-        st.subheader("音声を聞いていただき、質問にご回答ください。")
-        columns = st.columns(2, border=True)
-        columns[0].text("Audio A")
-        columns[0].audio(
-            "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/202507-abnormal-voice-conversion/qvc/100.wav"
+        st.text("音声を聞いていただき、質問にご回答ください。")
+        st.text("音声A")
+        st.audio(
+            "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/gt/audio/jvs001/099.wav"
         )
-        columns[1].text("Audio B")
-        columns[1].audio(
-            "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/202507-abnormal-voice-conversion/qvc_enc_p_flow/100.wav"
-        )
-        st.radio(
-            "Q1: イントネーションの自然さについて、どちらの方が自然に聞こえますか？",
+        nat_choice = st.radio(
+            "Q1: 音声Aのイントネーションの自然さについて、どう思いますか？",
             options=[
-                "A",
-                "ややA",
-                "分からない",
-                "ややB",
-                "B",
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
             ],
             index=None,
             horizontal=True,
         )
-        st.radio(
-            "Q2: 明瞭性について、どちらの方が聞き取りやすいと感じますか？",
+        int_choice = st.radio(
+            "Q2: 音声Aの明瞭性、聞き取りやすさについて、どう思いますか？",
             options=[
-                "A",
-                "ややA",
-                "分からない",
-                "ややB",
-                "B",
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
+            ],
+            index=None,
+            horizontal=True,
+        )
+        st.text("音声B")
+        st.audio(
+            "https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/gt/audio/jvs001/098.wav"
+        )
+        sim_choice = st.radio(
+            "Q3: 音声AとBの声の類似度について、どう思いますか",
+            options=[
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
             ],
             index=None,
             horizontal=True,

@@ -34,16 +34,16 @@ if "results" not in st.session_state:
 
 
 def choice_to_value(choice: str) -> int:
-    value = 0
+    value = 3
     match choice:
-        case "A":
-            value = -2
-        case "ややA":
-            value = -1
-        case "ややB":
+        case "とても悪い":
             value = 1
-        case "B":
+        case "悪い":
             value = 2
+        case "良い":
+            value = 4
+        case "とても良い":
+            value = 5
     return value
 
 
@@ -91,44 +91,44 @@ def exp_fragment():
     # Place interface
     with st.container(border=True):
         st.text(f"音声を聞いていただき、質問にご回答ください。")
-        st.text("Audio")
+        st.text("音声A")
         st.audio(url)
         nat_choice = st.radio(
-            "Q1: イントネーションの自然さについて、どのくらい自然ですか？",
+            "Q1: 音声Aのイントネーションの自然さについて、どう思いますか？",
             options=[
-                "非常に不自然",
-                "かなり不自然",
-                "不自然",
-                "やや不自然",
-                "自然",
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
             ],
             index=None,
             key=f'nat_choice_{st.session_state["sample_idx"]}',
             horizontal=True,
         )
         int_choice = st.radio(
-            "Q2: 明瞭性について，どちらの方が聞き取りやすいと感じますか?",
+            "Q2: 音声Aの明瞭性、聞き取りやすさについて、どう思いますか？",
             options=[
-                "非常に不自然",
-                "かなり不自然",
-                "不自然",
-                "やや不自然",
-                "自然",
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
             ],
             index=None,
             key=f'int_choice_{st.session_state["sample_idx"]}',
             horizontal=True,
         )
-        st.text("Another audio")
+        st.text("音声B")
         st.audio(sim_url)
         sim_choice = st.radio(
-            "Q3: 音声の類似度について，どちらの方が聞き取りやすいと感じますか?",
+            "Q3: 音声AとBの声の類似度について、どう思いますか",
             options=[
-                "非常に不自然",
-                "かなり不自然",
-                "不自然",
-                "やや不自然",
-                "自然",
+                "とても悪い",
+                "悪い",
+                "普通",
+                "良い",
+                "とても良い",
             ],
             index=None,
             key=f'sim_choice_{st.session_state["sample_idx"]}',
