@@ -23,19 +23,7 @@ with st.status(
         "finishing_time": datetime.datetime.now(pytz.timezone("Asia/Tokyo")).strftime(
             "%Y-%m-%d_%H-%M-%S"
         ),  # Record finishing time
-        "nat": ",".join(
-            [str(v) for v in st.session_state["results"]["nat"]]
-        ),  # Record intonation
-        "int": ",".join(
-            [str(v) for v in st.session_state["results"]["int"]]
-        ),  # Record intelligibility
-        "sim": ",".join(
-            [str(v) for v in st.session_state["results"]["sim"]]
-        ),  # Record intelligibility
-        "model_names": ",".join(
-            [sample["model_name"] for sample in st.session_state["samples"]]
-        ),
-        "idx": ",".join([sample["idx"] for sample in st.session_state["samples"]]),
+        "log": st.session_state["log"],
     }
 
     # Write to Firestore collection
@@ -51,6 +39,6 @@ st.text(
 st.header("Crowd Works ユーザーへ")
 st.caption("Crowd Works以外のユーザーは無視してください。")
 st.text(
-    "Crowd Worksの画面上の、合言葉を入れる欄に次のひらがな4文字を入力してください。\n\n"
+    "Crowd Worksの画面上で、合言葉を入れる欄に次のひらがな4文字を入力してください。\n\n"
     "「じんこう」"
 )

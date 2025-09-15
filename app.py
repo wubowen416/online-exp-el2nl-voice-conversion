@@ -1,30 +1,34 @@
-import streamlit as st
 import datetime
-import pytz
 
-st.title("ようこそ")
+import pytz
+import streamlit as st
 
 if "agree" not in st.session_state:
     st.session_state["agree"] = False
 
 if not st.session_state["agree"]:
+    st.title("はじめに")
     with st.container(border=True):
         st.header("実験概要")
         st.text(
-            "本実験は、人工知能で合成した発話のクオリティを調査することを目的としています。\n\n"
-            "被験者には、複数の合成音を聞いていただき、発話のクオリティに関する質問にご回答いただきます。所要時間は15～20分程度です。\n\n"
-            "本実験は、音声を聞く必要がありますので、イヤホンかスピーカーを準備してください。"
+            "本実験は、人工知能を使って合成した発話のクオリティを調査することを目的としています。\n"
+            "\n"
+            "複数の合成音を聞いたあと、発話のクオリティに関する質問にご回答いただきます。所要時間は15～20分程度です。\n"
+            "\n"
+            "本実験では音声が流れます。イヤホンかスピーカーをご準備ください"
         )
 
         st.header("同意書")
         st.text(
-            "本実験では、年齢および性別の情報を収集いたします。収集した情報はデータ解析の目的のみに使用し、それ以外の目的には一切使用いたしません。\n\n"
-            "「同意する」ボタンをクリックされた時点で、上記の内容を十分に理解し、同意いただいたものとみなします。ご同意いただけない場合は、本研究への参加を中止し、画面を閉じてください。"
+            "本実験では、年齢や性別の個人情報を収集いたします。これらはデータ解析の目的のみに使用し、それ以外の目的には一切使用いたしません。\n"
+            "\n"
+            "「同意する」のボタンをクリックされた時点で、上記の内容を十分に理解し、同意いただいたものとみなします。同意いただけない場合は、実験の参加を中止し、画面を閉じてください。"
         )
         if st.button(label="同意する"):
             st.session_state["agree"] = True
             st.rerun()
 else:
+    st.title("個人情報")
     with st.container(border=True):
         userid = st.text_input(
             label="ユーザーID", placeholder="ユーザーIDを半角で入力してください"
