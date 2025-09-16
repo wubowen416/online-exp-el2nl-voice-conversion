@@ -15,11 +15,19 @@ if "samples" not in st.session_state:
     hids = ["001", "021", "041", "061", "081"]
     samples = []
     for hid in hids:
-        for name in ["gt", "qvc_base", "qvc_ft_10k", "qvc_ft_pair_flat_10k"]:
+        for name in ["gt", "qvc_ft_10k"]:
             samples.append(
                 {
                     "url": get_url("001", name, hid),
                     "anchor_url": get_url("100", "gt", hid),
+                    "model_name": name,
+                    "hid": hid,
+                }
+            )
+            samples.append(
+                {
+                    "url": get_url("002", name, hid),
+                    "anchor_url": get_url("099", "gt", hid),
                     "model_name": name,
                     "hid": hid,
                 }
