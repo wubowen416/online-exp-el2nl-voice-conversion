@@ -7,7 +7,7 @@ import streamlit as st
 
 
 def get_url(idx: str, name: str):
-    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs001/{idx}.wav?t={int(time.time())}"
+    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs001/{idx}.wav?t={time.time()}"
     return url
 
 

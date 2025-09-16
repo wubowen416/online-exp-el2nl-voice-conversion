@@ -7,7 +7,7 @@ import streamlit as st
 
 
 def get_url(idx: str, name: str, hid: str):
-    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs{hid}/{idx}.wav?t={int(time.time())}"
+    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs{hid}/{idx}.wav?t={time.time()}"
     return url
 
 
@@ -135,7 +135,7 @@ def exp_fragment():
         cols[1].text("音声B")
         cols[1].audio(anchor_url)
         sim_choice = st.radio(
-            "**声の類似度**について、音質を無視して、音質音声AとBの声は似ていると思いますか",
+            "**声の類似度**について、音声AとBの声は似ていると思いますか？（同一人物の声に聞こえるか？）",
             options=[
                 "とても似ている",
                 "似ている",
