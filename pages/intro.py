@@ -55,7 +55,7 @@ with st.container(border=True):
             options=[
                 "A",
                 "ややA",
-                "分からない",
+                "どちらとも言えない",
                 "ややB",
                 "B",
             ],
@@ -67,7 +67,7 @@ with st.container(border=True):
             options=[
                 "A",
                 "ややA",
-                "分からない",
+                "どちらとも言えない",
                 "ややB",
                 "B",
             ],
