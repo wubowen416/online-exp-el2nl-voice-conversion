@@ -58,7 +58,7 @@ def choice_to_value(choice: str) -> int:
             value = 1
         case "ややB":
             value = -1
-        case "ややB":
+        case "B":
             value = -2
     return value
 
