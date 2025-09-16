@@ -80,7 +80,7 @@ if "sample_idx" not in st.session_state:
 def choice_to_value(choice: str) -> int:
     value = 3
     match choice:
-        case "とても似ていない":
+        case "まったく似ていない":
             value = 1
         case "似ていない":
             value = 2
@@ -137,11 +137,11 @@ def exp_fragment():
         sim_choice = st.radio(
             "**声の類似度**について、音質を無視して、音質音声AとBの声は似ていると思いますか",
             options=[
-                "とても似ていない",
-                "似ていない",
-                "どちらとも言えない",
-                "似ている",
                 "とても似ている",
+                "似ている",
+                "どちらとも言えない",
+                "似ていない",
+                "まったく似ていない",
             ],
             index=None,
             key=f'sim_choice_{st.session_state["sample_idx"]}',
