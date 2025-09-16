@@ -19,7 +19,7 @@ if "samples" not in st.session_state:
             samples.append(
                 {
                     "url_a": get_url(idx, "qvc_ft_10k"),
-                    "url_b": get_url(idx, name),  # for similarity comparison
+                    "url_b": get_url(idx, name),
                     "model_name": name,
                     "idx": idx,
                     "swap": np.random.rand() > 0.5,

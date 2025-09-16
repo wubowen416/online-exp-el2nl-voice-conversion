@@ -27,11 +27,11 @@ if "samples" not in st.session_state:
             )
             samples.append(
                 {
-                    "url": get_url("002", name, hid),
+                    "url": get_url("011", name, hid),
                     "anchor_url": get_url("099", "gt", hid),
                     "model_name": name,
                     "hid": hid,
-                    "idx": "002",
+                    "idx": "011",
                 }
             )
     np.random.shuffle(samples)
