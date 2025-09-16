@@ -7,33 +7,68 @@ import streamlit as st
 
 
 def get_url(idx: str, name: str, hid: str):
-    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs{hid}/{idx}.wav"
+    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs{hid}/{idx}.wav?t={int(time.time())}"
     return url
 
 
 if "samples" not in st.session_state:
-    hids = ["001", "021", "041", "061", "081"]
+    hids = [
+        "001",
+        "021",
+        "041",
+        "061",
+        "081",
+        "001",
+        "021",
+        "041",
+        "061",
+        "081",
+        "001",
+        "021",
+        "041",
+        "061",
+        "081",
+    ]
+    idcs = [
+        "001",
+        "011",
+        "017",
+        "021",
+        "025",
+        "035",
+        "036",
+        "058",
+        "065",
+        "071",
+        "075",
+        "077",
+        "086",
+        "088",
+        "092",
+    ]
     samples = []
-    for hid in hids:
-        for name in ["gt", "qvc_ft_10k"]:
+    for i, hid in enumerate(hids):
+        if i < 5:
             samples.append(
                 {
-                    "url": get_url("001", name, hid),
+                    "url": get_url(idcs[i], "gt", hid),
                     "anchor_url": get_url("100", "gt", hid),
-                    "model_name": name,
+                    "model_name": "gt",
                     "hid": hid,
-                    "idx": "001",
+                    "idx": idcs[i],
                 }
             )
-            samples.append(
-                {
-                    "url": get_url("011", name, hid),
-                    "anchor_url": get_url("099", "gt", hid),
-                    "model_name": name,
-                    "hid": hid,
-                    "idx": "011",
-                }
-            )
+        samples.append(
+            {
+                "url": get_url(idcs[i], "qvc_ft_10k", hid),
+                "anchor_url": get_url("100", "gt", hid),
+                "model_name": "qvc_ft_10k",
+                "hid": hid,
+                "idx": idcs[i],
+            }
+        )
+    for sample in samples:
+        print(sample["url"])
     np.random.shuffle(samples)
     st.session_state["samples"] = samples
 if "num_samples" not in st.session_state:
@@ -96,15 +131,15 @@ def exp_fragment():
         st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
-        cols[0].audio(f"{url}?t={int(time.time())}")
+        cols[0].audio(url)
         cols[1].text("音声B")
-        cols[1].audio(f"{anchor_url}?t={int(time.time())}")
+        cols[1].audio(anchor_url)
         sim_choice = st.radio(
             "**声の類似度**について、音声AとBの声は似ていると思いますか",
             options=[
                 "とても似ていない",
                 "似ていない",
-                "とちらとも言えない",
+                "どちらとも言えない",
                 "似ている",
                 "とても似ている",
             ],

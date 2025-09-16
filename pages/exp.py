@@ -7,12 +7,28 @@ import streamlit as st
 
 
 def get_url(idx: str, name: str):
-    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs001/{idx}.wav"
+    url = f"https://wu-cloud-bucket.s3.ap-northeast-3.amazonaws.com/20250912-el2nl-voice-conversion/el2nl/{name}/audio/jvs001/{idx}.wav?t={int(time.time())}"
     return url
 
 
 if "samples" not in st.session_state:
-    idcs = ["001", "011", "017", "021", "025", "035", "036", "058", "065", "071"]
+    idcs = [
+        "001",
+        "011",
+        "017",
+        "021",
+        "025",
+        "035",
+        "036",
+        "058",
+        "065",
+        "071",
+        "075",
+        "077",
+        "086",
+        "088",
+        "092",
+    ]
     samples = []
     for idx in idcs:
         for name in ["qvc_base", "qvc_ft_pair_flat_10k"]:
@@ -116,9 +132,9 @@ def exp_fragment():
         st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
-        cols[0].audio(f"{url_a}?t={int(time.time())}")
+        cols[0].audio(url_a)
         cols[1].text("音声B")
-        cols[1].audio(f"{url_b}?t={int(time.time())}")
+        cols[1].audio(url_b)
         intonation_choice = st.radio(
             "Q1: **イントネーションの自然さ**について、どちらの方が自然に聞こえますか？",
             options=[
