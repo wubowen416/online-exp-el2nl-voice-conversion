@@ -1,9 +1,9 @@
 import streamlit as st
 
-st.title("実験説明")
+st.title("実験内容")
 
 with st.container(border=True):
-    st.header("実験内容")
+    st.header("実験説明")
     st.markdown(
         """
         本実験では、5〜10秒程度の発話音声のペアを聞いた後、質問にご回答いただきます。
