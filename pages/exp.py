@@ -31,7 +31,7 @@ if "samples" not in st.session_state:
     ]
     samples = []
     for idx in idcs:
-        for name in ["qvc_base", "qvc_ft_pair_flat_10k"]:
+        for name in ["qvc_ft_pair_flat_10k"]:
             samples.append(
                 {
                     "url_a": get_url(idx, "qvc_ft_10k"),

@@ -127,7 +127,7 @@ def exp_fragment():
 
     # Place interface
     with st.container(border=True):
-        st.subheader("声の類似度")
+        st.subheader("声の類似度（イントネーションや明瞭度は無視）")
         st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
@@ -135,7 +135,7 @@ def exp_fragment():
         cols[1].text("音声B")
         cols[1].audio(anchor_url)
         sim_choice = st.radio(
-            "**声の類似度**について、音声AとBの声は似ていると思いますか",
+            "**声の類似度**について、音質を無視して、音質音声AとBの声は似ていると思いますか",
             options=[
                 "とても似ていない",
                 "似ていない",
