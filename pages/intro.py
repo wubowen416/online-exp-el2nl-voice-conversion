@@ -19,7 +19,7 @@ with st.container(border=True):
         
         各質問にはラジオボタン式の選択肢があります。もっとも当てはまるものを選択してください。
 
-        セクションごとに20ぺたを評価していただきます。全部で40ペアになります。所要時間は20分程度です。
+        セクションごとに20ペアを評価していただきます。全部で40ペアになります。所要時間は20分程度です。
 
         音声は一度だけ繰り返して聞くことができます。(最大2回)
 
@@ -38,7 +38,7 @@ with st.container(border=True):
 
     with st.container(border=True):
         st.subheader("自然さ・明瞭性")
-        st.text(f"音声を全部聞いていただき、質問にご回答ください。")
+        st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
         cols[0].audio(
@@ -75,7 +75,7 @@ with st.container(border=True):
 
     with st.container(border=True):
         st.subheader("声の類似度")
-        st.text(f"音声を全部聞いていただき、質問にご回答ください。")
+        st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
         cols[0].audio(

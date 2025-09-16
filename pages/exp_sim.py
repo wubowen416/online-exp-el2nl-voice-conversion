@@ -22,6 +22,7 @@ if "samples" not in st.session_state:
                     "anchor_url": get_url("100", "gt", hid),
                     "model_name": name,
                     "hid": hid,
+                    "idx": "001",
                 }
             )
             samples.append(
@@ -30,6 +31,7 @@ if "samples" not in st.session_state:
                     "anchor_url": get_url("099", "gt", hid),
                     "model_name": name,
                     "hid": hid,
+                    "idx": "002",
                 }
             )
     np.random.shuffle(samples)
@@ -91,7 +93,7 @@ def exp_fragment():
     # Place interface
     with st.container(border=True):
         st.subheader("声の類似度")
-        st.text(f"音声を全部聞いていただき、質問にご回答ください。")
+        st.text(f"音声を聞いて、質問にお答えください。")
         cols = st.columns(2, border=True)
         cols[0].text("音声A")
         cols[0].audio(f"{url}?t={int(time.time())}")
@@ -114,7 +116,7 @@ def exp_fragment():
             "次へ",
             on_click=on_form_submitted,
             disabled=choice_has_not_been_made,
-            help="質問にご回答ください" if choice_has_not_been_made else "",
+            help="質問にお答えください。" if choice_has_not_been_made else "",
         )
 
     progress_bar.progress(
